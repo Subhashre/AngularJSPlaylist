@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en-US" ng-app="myApp">
+
+<head>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="js\module.js"></script>
+</head>
+
+
+<body ng-controller="myController">
+    <h1>
+        Welcome to Subhashree Education Page.
+    </h1>
+    <div ng-init="filterCondition=''">
+        <p>Search Skill</p>
+        <input type="text" ng-model="filterCondition" placeholder="Search name wise"></input>
+        <table border="1" ng-init="orderCondition='name'">
+            <tr>
+                <th ng-click="orderby('name')">Skill Name
+                </th>
+                <th ng-click="orderby('proficient')">Proficient Level
+                </th>
+            </tr>
+            <tr ng-repeat="skill in skillList | orderBy : orderCondition">
+                <td>{{skill.name}}</td>
+                <td>{{skill.proficient}}</td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td>
+                    <p>Add Skills</p>
+                </td>
+                <td>
+                    <input type="text" ng-model="skillName" placeholder="Enter Your skill here">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Add Proficiency</p>
+                </td>
+                <td>
+                    <input type="text" ng-model="skillProficient" placeholder="Enter Your Proficiency here">
+                </td>
+            </tr>
+            <tr>
+                <td/>
+                <td><input type="submit" ng-click="addNew()" value="Add New Skill"></input>
+                </td>
+            </tr>
+        </table>
+
+        <p>Search Skill</p>
+        <table border="1" ng-init="orderCondition=''">
+            <tr>
+                <td>
+                    <input type="text" ng-model="orderCondition" placeholder="Search name wise"></input>
+                </td>
+                 <td>
+                    <input type="text" ng-model="orderCondition" placeholder="Search profiency wise"></input>
+                </td>
+            </tr>
+            <tr>
+                <th>Skill Name
+                </th>
+                <th>Proficient Level
+                </th>
+            </tr>
+            <tr ng-repeat="skill in skillList">
+                <td>{{skill.name}}</td>
+                <td>{{skill.proficient}}</td>
+            </tr>
+        </table>
+
+
+    </div>
+
+</body>
+
+</html>
